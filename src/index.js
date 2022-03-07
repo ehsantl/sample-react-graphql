@@ -8,30 +8,33 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
+import { BrowserRouter } from 'react-router-dom';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
 });
-
-// client
-//   .query({
-//     query: gql`
-//       query Products {
-//         products {
-//           id
-//           name
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
-
+/*
+client
+  .query({
+    query: gql`
+      query Products {
+        products {
+          id
+          name
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
+*/
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
